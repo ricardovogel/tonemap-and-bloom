@@ -7,7 +7,7 @@ There are also several parameters. The smoothing factor changes how bright a pix
 
 A full overview of the technique can be seen below:
 ![Overview image of the process](overview.png)
-*Original images by Kevin McCoy.*
+*Original images by Kevin McCoy, kernel by Unreal Engine*
 
 ## Code Structure
 The code consists of four parts. `tonemap_and_bloom.py` is the general algorithm, along with some helpful tools such as image saving and loading. `main.py` runs the algorithm and saves it in the img folder. `application.py` is a Kivy user interface to run the algorithm more easily. The last image created is stored in img/app_output. Finally, `time.py` output the average runtime for an image.
