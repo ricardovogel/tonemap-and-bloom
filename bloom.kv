@@ -1,0 +1,70 @@
+#:kivy 1.11.1
+
+<ImgView>:
+    BoxLayout:
+        orientation: 'horizontal'
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Image name'
+            TextInput:
+                id: imgname
+                text: ""
+            Label:
+                text: 'List of EVs (e.g. "-1, 0, 1")'
+            TextInput:
+                id: evs
+                text: ""
+            Label:
+                text: 'Image extension (e.g. "jpg")'
+            TextInput:
+                id: ext
+                text: ""
+            Label:
+                text: 'Kernel name (e.g. "kernel.png")'
+            TextInput:
+                id: kernname
+                text: ""
+            Label:
+                text: 'Exposure fusion parameters (e.g. "1.0, 1.0, 1.0")'
+            TextInput:
+                id: tonemap
+                text: ""
+            Label:
+                text: 'Bloom kernel size (e.g. "15, 15")'
+            TextInput:
+                id: kernsize
+                text: ""
+            Label:
+                text: 'Smoothing factor'
+            TextInput:
+                id: smoothing
+                text: ""
+            Label:
+                text: 'Bloom intensity'
+            TextInput:
+                id: intensity
+                text: ""
+            Button:
+                text: 'Generate'
+                on_release: 
+                    app.run_process(root.ids.imgname.text, root.ids.evs.text, root.ids.ext.text, root.ids.kernname.text, root.ids.tonemap.text, root.ids.kernsize.text, root.ids.smoothing.text, root.ids.intensity.text)
+                    root.ids.main_img.reload()
+                    root.ids.bloom_overlay.reload()
+                    root.ids.tone_mapped.reload()
+        BoxLayout:
+            orientation: 'vertical'
+            BoxLayout:
+                orientation: 'horizontal'
+                Image:
+                    id: tone_mapped
+                    source: "img/app_output/tone_mapped.png"
+                    size: self.texture_size
+                Image:
+                    id: bloom_overlay
+                    source: "img/app_output/bloom_overlay.png"
+                    size: self.texture_size
+            Image:
+                id: main_img
+                source: "img/app_output/final.png"
+                size: self.texture_size
